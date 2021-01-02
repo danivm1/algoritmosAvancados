@@ -1,0 +1,82 @@
+breadth-first search BFS
+
+começa
+marcado 		fila
+marcado 6		fila 6
+marcado 6,4		fila 6,4
+marcado 6,4		fila 4
+marcado 6,4,3		fila 4,3
+marcado 6,4,3,5		fila 4,3,5
+marcado 6,4,3,5		fila 3,5
+marcado 6,4,3,5,2	fila 3,5,2
+marcado 6,4,3,5,2	fila 5,2
+marcado 6,4,3,5,2,1	fila 5,2,1
+marcado 6,4,3,5,2,1	fila 2,1
+marcado 6,4,3,5,2,1	fila 1
+marcado 6,4,3,5,2,1	fila 
+acaba
+
+contar adjacencia nao marcada 4
+a = 2
+logo 3 e 5 serao uma camada só (camada 3ª)
+
+contar adj n marc 3
+b = 1
+contar adj n marc 5
+c = 1
+
+a camada 3ª possui um total de 2 adj n marc
+logo os proximos 2 vertices serao mesma camada (2 e 1 camada 4ª)
+
+
+escolhe vertice raiz
+marca
+coloca na fila
+repete até fila esvaziar
+	repete até não houver mais adjacentes não marcados do primeiro da fila
+		checa adjacentes não marcados do primeiro da fila
+		marca adjacentes
+		coloca no final da fila
+	tira primeiro da fila
+
+
+
+
+depth-first search DFS
+
+começa
+marcado 				pilha
+marcado	1				pilha 1
+marcado	1,2				pilha 1,2
+marcado	1,2,3				pilha 1,2,3
+marcado	1,2,3,4				pilha 1,2,3,4
+marcado	1,2,3,4				pilha 1,2,3
+marcado	1,2,3,4,5			pilha 1,2,3,5
+marcado	1,2,3,4,5			pilha 1,2,3
+marcado	1,2,3,4,5			pilha 1,2
+marcado	1,2,3,4,5,6			pilha 1,2,6
+marcado	1,2,3,4,5,6			pilha 1,2
+marcado	1,2,3,4,5,6			pilha 1
+marcado	1,2,3,4,5,6,7			pilha 1,7
+marcado	1,2,3,4,5,6,7			pilha 1
+marcado	1,2,3,4,5,6,7,8			pilha 1,8
+marcado	1,2,3,4,5,6,7,8,9		pilha 1,8,9
+marcado	1,2,3,4,5,6,7,8,9,10		pilha 1,8,9,10
+marcado	1,2,3,4,5,6,7,8,9,10		pilha 1,8,9
+marcado	1,2,3,4,5,6,7,8,9,10,11		pilha 1,8,9,11
+marcado	1,2,3,4,5,6,7,8,9,10,11		pilha 1,8,9
+marcado	1,2,3,4,5,6,7,8,9,10,11		pilha 1,8
+marcado	1,2,3,4,5,6,7,8,9,10,11,12	pilha 1,8,12
+marcado	1,2,3,4,5,6,7,8,9,10,11,12	pilha 1,8
+marcado	1,2,3,4,5,6,7,8,9,10,11,12	pilha 1
+marcado	1,2,3,4,5,6,7,8,9,10,11,12	pilha 
+acaba
+
+
+escolhe vertice raiz
+marca
+coloca na pilha
+repete até pilha esvaziar
+	repete até achar UM adjacente do último da pilha não marcado
+		coloca na pilha
+	senão tira último da pilha
