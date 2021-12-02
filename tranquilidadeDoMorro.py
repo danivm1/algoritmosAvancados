@@ -131,23 +131,19 @@ imprime_aresta(grafo)
 
 print("\n\n", grafo)
 
-asdasd = 1
-if asdasd == 1:
-    x = input("\nDeseja saber a adjacência de algum vértice? s/n")
-    if x=="s" or x=="sim":
-        y = input("Qual vértice?")
-        imprime_adjacencia(grafo, y)
-
-    x = input("\nDeseja saber a existência de uma aresta entre dois vértices? s/n")
-    if x=="s" or x=="sim":
-        y = input("Insira o primeiro vértice")
-        z = input("Insira o segundo vértice")
-        verifica_aresta(grafo, y, z)
-
-    x = input("\nDeseja saber o grau de algum vértice? s/n")
-    if x=="s" or x=="sim":
-        y = input("Qual vértice?")
-        imprime_grau_vertice(grafo, y)
+x = input("\nDeseja saber a adjacência de algum vértice? s/n")
+if x=="s" or x=="sim":
+    y = input("Qual vértice?")
+    imprime_adjacencia(grafo, y)
+x = input("\nDeseja saber a existência de uma aresta entre dois vértices? s/n")
+if x=="s" or x=="sim":
+    y = input("Insira o primeiro vértice")
+    z = input("Insira o segundo vértice")
+    verifica_aresta(grafo, y, z)
+x = input("\nDeseja saber o grau de algum vértice? s/n")
+if x=="s" or x=="sim":
+    y = input("Qual vértice?")
+    imprime_grau_vertice(grafo, y)
 
 x = input("\nDeseja realizar uma busca por largura? s/n")
 if x=="s" or x=="sim":
