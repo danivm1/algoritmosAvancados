@@ -14,9 +14,6 @@ def imprime_grafo(g):
         print('Vertice:', v)
         print('Adjacentes:', a)
 
-def checa_vertice(g, v):
-    return True if v in g.keys() else False
-
 def imprime_aresta(g):
     arestas = []
     for v,a in g.items():
@@ -35,25 +32,32 @@ def imprime_aresta(g):
 def imprime_adjacencia(g, x):
     m=0
     n=0
-    if not checa_vertice(g, x): return print("Vértice inexistente", end="")
     for v, a in g.items():
-        if v==x: return print(a, end="")
+        if v==x: print(a, end="")
+        else: m+=1
+        n+=1
+    print("Vértice inexistente " if m==n else "", end="")
 
 # exe D
 def verifica_aresta(g, v1, v2):
     x=0
-    if not checa_vertice(g, v1): return print("Vértice inexistente", end="")
-    if not checa_vertice(g, v2): return print("Vértice inexistente", end="")
     for v, a in g.items():
         for i in a:
             if v==v1 and i==v2:
-                return print("Os vértices '{}' e '{}' estão ligados por uma aresta".format(v1, v2), end="")
-    print("Os vértices '{}' e '{}' NÃO estão ligados por uma aresta".format(v1, v2), end="")
+                print("Os vértices '{}' e '{}' estão ligados por uma aresta".format(v1, v2), end="")
+                x-=1
+        if v!=v1 or i!=v2: x+=1
+    if x==len(g.items()): print("Os vértices '{}' e '{}' NÃO estão ligados por uma aresta".format(v1, v2), end="")
 
 # exe E
-def imprime_grau_vertice(g, v):
-    if not checa_vertice(g, v): return print("Vértice inexistente", end="")
-    print("{}".format(len))
+def imprime_grau_vertice(g, y):
+    x=0
+    for v, a in g.items():
+        if v!=y: x+=1
+    if x==len(g.items()): print("O vértice '{}' não existe".format(y))
+    else: 
+        for v, a in g.items(): 
+            if v==y: print(len(a))
 
 def bota(v, x):
     v.append(x)
@@ -131,7 +135,7 @@ imprime_aresta(grafo)
 
 print("\n\n", grafo)
 
-asdasd = 1
+asdasd = 0
 if asdasd == 1:
     x = input("\nDeseja saber a adjacência de algum vértice? s/n")
     if x=="s" or x=="sim":
