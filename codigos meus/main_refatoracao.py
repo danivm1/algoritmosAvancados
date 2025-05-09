@@ -1,37 +1,48 @@
 # TODO: Refatorar esse código nojento
 
 # exe A
-def insere_vertice(g, a, b):
-    if a not in g:
-        g[a]=[]
-    if b not in g:
-        g[b]=[]
-    g[a].append(b)
-    g[b].append(a)
+def insere_vertice(g: dict[str, set], a, b):
+    if a == b: return
+    if a not in g: g[a] = set()
+    if b not in g: g[b] = set()
+    
+    g[a].add(b)
+    g[b].add(a)
+
 
 # exe B
 def imprime_grafo(g):
     for v,a in g.items():
         print("="*50)
-        print('Vertice:', v)
-        print('Adjacentes:', a)
+        print(f'Vertice: {v}')
+        print(f'Adjacentes: {a}')
+
 
 def checa_vertice(g, v):
-    return True if v in g.keys() else False
+    return v in g.keys()
 
-def imprime_aresta(g):
+# def imprime_aresta(g):
+#     arestas = []
+#     for v,a in g.items():
+#         for i in a:
+#             x = v + i
+#             y = i + v
+#             s = 0
+#             for z in arestas:
+#                 if z == y:
+#                    s += 1 
+#             if s == 0:
+#                 arestas.append(x)
+#     print ("Arestas: ", arestas)
+    
+def imprime_aresta(g: dict):
     arestas = []
-    for v,a in g.items():
+    
+    for v, a in g.items():
         for i in a:
-            x = v + i
-            y = i + v
-            s = 0
-            for z in arestas:
-                if z == y:
-                   s += 1 
-            if s == 0:
-                arestas.append(x)
-    print ("Arestas: ", arestas)
+            if not (v+i in arestas or i+v in arestas):
+                arestas.append(v+i)
+    print(f"Arestas: {arestas}")
 
 # exe C
 def imprime_adjacencia(g, x):
@@ -53,9 +64,9 @@ def verifica_aresta(g, v1, v2):
     print("Os vértices '{}' e '{}' NÃO estão ligados por uma aresta".format(v1, v2), end="")
 
 # exe E
-def imprime_grau_vertice(g, v):
-    if not checa_vertice(g, v): return print("Vértice inexistente", end="")
-    print("{}".format(len))
+def imprime_grau_vertice(g: dict, v):
+    if not checa_vertice(g, v): print("Vértice inexistente", end="")
+    else: print(len(g[v]))
 
 def bota(v, x):
     v.append(x)
@@ -133,26 +144,26 @@ imprime_aresta(grafo)
 
 print("\n\n", grafo)
 
-x = input("\nDeseja saber a adjacência de algum vértice? s/n")
+x = input("\nDeseja saber a adjacência de algum vértice? s/n: ")
 if x=="s" or x=="sim":
-    y = input("Qual vértice?")
+    y = input("Qual vértice?: ")
     imprime_adjacencia(grafo, y)
-x = input("\nDeseja saber a existência de uma aresta entre dois vértices? s/n")
+x = input("\nDeseja saber a existência de uma aresta entre dois vértices? s/n: ")
 if x=="s" or x=="sim":
-    y = input("Insira o primeiro vértice")
-    z = input("Insira o segundo vértice")
+    y = input("Insira o primeiro vértice: ")
+    z = input("Insira o segundo vértice: ")
     verifica_aresta(grafo, y, z)
-x = input("\nDeseja saber o grau de algum vértice? s/n")
+x = input("\nDeseja saber o grau de algum vértice? s/n: ")
 if x=="s" or x=="sim":
-    y = input("Qual vértice?")
+    y = input("Qual vértice?: ")
     imprime_grau_vertice(grafo, y)
 
-x = input("\nDeseja realizar uma busca por largura? s/n")
+x = input("\nDeseja realizar uma busca por largura? s/n: ")
 if x=="s" or x=="sim":
-    y = input("Qual o vértice raiz?")
+    y = input("Qual o vértice raiz?: ")
     print(breadth_first_search(grafo, y))
 
-x = input("\nDeseja realizar uma busca por profundidade? s/n")
+x = input("\nDeseja realizar uma busca por profundidade? s/n: ")
 if x=="s" or x=="sim":
-    y = input("Qual o vértice raiz?")
+    y = input("Qual o vértice raiz?: ")
     print(depth_first_search(grafo, y))
