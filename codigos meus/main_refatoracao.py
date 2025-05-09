@@ -1,3 +1,5 @@
+# TODO: Refatorar esse código nojento
+
 # exe A
 def insere_vertice(g, a, b):
     if a not in g:
