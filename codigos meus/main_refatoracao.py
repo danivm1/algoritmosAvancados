@@ -21,19 +21,6 @@ def imprime_grafo(g):
 def checa_vertice(g, v):
     return v in g.keys()
 
-# def imprime_aresta(g):
-#     arestas = []
-#     for v,a in g.items():
-#         for i in a:
-#             x = v + i
-#             y = i + v
-#             s = 0
-#             for z in arestas:
-#                 if z == y:
-#                    s += 1 
-#             if s == 0:
-#                 arestas.append(x)
-#     print ("Arestas: ", arestas)
     
 def imprime_aresta(g: dict):
     arestas = []
